@@ -1,16 +1,30 @@
 import { Searchbar } from './Searchbar/Searchbar';
-
+import api from './Services/api';
 
 export const App = () => {
-  
-  // state = {
-  //   word: '',
-  // };
-  
-  // handleSubmit = (ev) => {
-  //   ev.preventDefault();
-  //   const input = this.state.word;
-  // }
+  state = {
+    word: '',
+    query: '',
+    pageNum: '',
+  };
+
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    this.getImages(this.state.query);
+  };
+
+  getImages = async query => {
+    try {
+      const images = await api.fetchImagesFromApi(query);
+      this.setState({ images });
+    } catch (err) {
+      this.setState({ error: err });
+    }
+  };
+
+  componentDidMount() {
+        this.getImages('HTML')
+    }
 
   return (
     <div
@@ -23,7 +37,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <Searchbar forSubmit={"dodać handler"} />
+      <Searchbar forSubmit={this.handleSubmit} />
     </div>
   );
 };
