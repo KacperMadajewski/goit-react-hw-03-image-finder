@@ -1,4 +1,17 @@
+import { Searchbar } from './Searchbar/Searchbar';
+
+
 export const App = () => {
+  
+  // state = {
+  //   word: '',
+  // };
+  
+  // handleSubmit = (ev) => {
+  //   ev.preventDefault();
+  //   const input = this.state.word;
+  // }
+
   return (
     <div
       style={{
@@ -7,10 +20,10 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
-      React homework template
+      <Searchbar forSubmit={"dodać handler"} />
     </div>
   );
 };
