@@ -1,43 +1,40 @@
+import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import api from './Services/api';
 
-export const App = () => {
+export class App extends Component {
   state = {
-    word: '',
     query: '',
-    pageNum: '',
+    images: []
+  };
+
+  handleChange = (ev) => {
+    this.setState({ query: ev.target.value });
   };
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    this.getImages(this.state.query);
-  };
-
-  getImages = async query => {
-    try {
-      const images = await api.fetchImagesFromApi(query);
+    const { query } = this.state;
+    api.fetchImagesFromApi(query).then(images => {
       this.setState({ images });
-    } catch (err) {
-      this.setState({ error: err });
-    }
+    });
   };
 
-  componentDidMount() {
-        this.getImages('HTML')
-    }
-
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <Searchbar forSubmit={this.handleSubmit} />
-    </div>
-  );
-};
+  
+  render() {
+    return (
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+      >
+        <Searchbar forSubmit={this.handleSubmit} forChange={this.handleChange} />
+      </div>
+    );
+  };
+}

@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 
 export class Searchbar extends Component {
   render() {
-    const { forSubmit } = this.props;
+    const { forSubmit, forChange} = this.props;
     return (
-      <header class="searchbar">
-        <form class="form" onSubmit={forSubmit}>
-          <button type="submit" class="button">
-            <span class="button-label">Search</span>
+      <header>
+        <form onSubmit={forSubmit}>
+          <button type="submit">
+            <span>Search</span>
           </button>
 
           <input
-            class="input"
             type="text"
-            autocomplete="off"
-            autofocus
             placeholder="Search images and photos"
             name="word"
+            onChange={forChange}
           />
         </form>
       </header>
