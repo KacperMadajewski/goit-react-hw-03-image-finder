@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 
 export class Searchbar extends Component {
+  state = {
+    query: '',
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.query);
+  };
+
+  handleChange = (e) => {
+    this.setState({ query: e.target.value });
+  };
+
   render() {
-    const { forSubmit, forChange} = this.props;
     return (
       <header>
-        <form onSubmit={forSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <button type="submit">
             <span>Search</span>
           </button>
@@ -13,8 +25,8 @@ export class Searchbar extends Component {
           <input
             type="text"
             placeholder="Search images and photos"
-            name="word"
-            onChange={forChange}
+            onChange={this.handleChange}
+            value={this.state.query}
           />
         </form>
       </header>
