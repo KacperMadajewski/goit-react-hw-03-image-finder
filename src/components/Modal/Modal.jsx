@@ -7,8 +7,8 @@ export class Modal extends Component {
     if (!isOpen) return null;
 
     return (
-      <div className="modal">
-        <div className="modal-content">
+      <div>
+        <div>
           <img src={imageUrl} alt="Powiększony obraz" />
           <button onClick={onClose}>Zamknij</button>
         </div>

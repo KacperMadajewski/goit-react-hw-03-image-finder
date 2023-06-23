@@ -49,7 +49,7 @@ export class App extends Component {
   // };
 
   render() {
-    const { query, loading, images, selectedImage } = this.state;
+    const { loading, images, selectedImage } = this.state;
     return (
       <div
         style={{
