@@ -62,8 +62,20 @@ export class App extends Component {
         }}
       >
         <Searchbar onSubmit={this.handleSearch} />
+        <ImageGallery items={images} onItemClick={this.openModal} />
+        {loading && <Loader />}
 
-        {loading ? (
+        {selectedImage && (
+          <Modal
+            isOpen={true}
+            onClose={this.closeModal}
+            imageUrl={selectedImage}
+          />
+        )}
+
+        {/* POPRZEDNIA WERSJA WYŚWIETLANIA */}
+
+        {/* {loading ? (
           <Loader />
         ) : (
           <ImageGallery items={images} onItemClick={this.openModal} />
@@ -75,7 +87,7 @@ export class App extends Component {
             onClose={this.closeModal}
             imageUrl={selectedImage}
           />
-        )}
+        )} */}
       </div>
     );
   }
