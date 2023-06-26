@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import css from './Searchbar.module.css';
+import PropTypes from 'prop-types';
 
 export class Searchbar extends Component {
   state = {
@@ -16,13 +18,14 @@ export class Searchbar extends Component {
 
   render() {
     return (
-      <header>
-        <form onSubmit={this.handleSubmit}>
-          <button type="submit">
-            <span>Search</span>
+      <header className={css.header}>
+        <form className={css.form} onSubmit={this.handleSubmit}>
+          <button className={css.formBtn} type="submit">
+            <span className={css.formSpan}>Search</span>
           </button>
 
           <input
+            className={css.formInput}
             type="text"
             placeholder="Search images and photos"
             onChange={this.handleChange}
@@ -33,3 +36,7 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

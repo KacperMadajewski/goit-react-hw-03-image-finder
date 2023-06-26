@@ -1,4 +1,5 @@
-import { Component } from "react";
+import { Component } from 'react';
+import css from './ImageGalleryItem.module.css';
 
 export class ImageGalleryItem extends Component {
   handleClick = () => {
@@ -8,8 +9,9 @@ export class ImageGalleryItem extends Component {
   render() {
     const { item } = this.props;
     return (
-      <li>
+      <li className={css.list}>
         <img
+          className={css.img}
           src={item.webformatURL}
           alt={item.tags}
           onClick={this.handleClick}
