@@ -59,18 +59,6 @@ export class App extends Component {
     this.setState({ selectedImage: null });
   };
 
-  // handleChange = ev => {
-  //   this.setState({ query: ev.target.value });
-  // };
-
-  // handleSubmit = ev => {
-  //   ev.preventDefault();
-  //   const { query } = this.state;
-  //   api.fetchImagesFromApi(query).then(images => {
-  //     this.setState({ images });
-  //   });
-  // };
-
   render() {
     const { loading, images, selectedImage, page } = this.state;
     const showLoadButton = images.length > 0;
@@ -104,22 +92,6 @@ export class App extends Component {
         >
           Load more
         </Button>
-
-        {/* POPRZEDNIA WERSJA WYŚWIETLANIA */}
-
-        {/* {loading ? (
-          <Loader />
-        ) : (
-          <ImageGallery items={images} onItemClick={this.openModal} />
-        )}
-        <ImageGallery items={images} onItemClick={this.openModal} />
-        {selectedImage && (
-          <Modal
-            isOpen={true}
-            onClose={this.closeModal}
-            imageUrl={selectedImage}
-          />
-        )} */}
       </div>
     );
   }
